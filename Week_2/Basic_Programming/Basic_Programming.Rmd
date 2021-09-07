@@ -30,9 +30,11 @@ un vector atómico sólo puede contener elementos del mismo tipo
 Para crear un vector utilizar c()
 
 Numérico
-````c(2.5, 48.5, 101.5)````
+````c(2.5, 48.5, 101.5)
+````
 Enteros
-````c(1L, 5L, 15L)````
+````c(1L, 5L, 15L)
+````
 Caracteres
 ````c("Sara" , "Lisa" , "Anna")````
 Lógico
