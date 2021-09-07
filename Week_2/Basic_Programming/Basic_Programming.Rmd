@@ -15,7 +15,8 @@ Pipe expresa una secuencia de múltiples operaciones representadas con
 %>% por ejemplo para utilizar una función en otra
 
 No ejecutar, es un ejemplo
-````ToothGrowth %>% filter(dose == 0.5 %>% arrange(len))````
+````ToothGrowth %>% filter(dose == 0.5 %>% arrange(len))
+````
 
 ## VECTORES
 
