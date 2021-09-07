@@ -54,7 +54,8 @@ list("a", 1L, 1.5, TRUE)
 # Y pueden contener otras listas
 list(list(list(1 , 3, 5)))
 
-#Para determinar la clase de cada elemento de una lista usamos str() tanto a la lista
+# Para determinar la clase de cada elemento de una lista usamos str() tanto a la 
+# lista
 str(list("a", 1L, 1.5, TRUE))
 
 # Como a la variable a la que hayamos asignado la lista
