@@ -1,6 +1,10 @@
 {
-    "path" : "~/Google-Certificate",
+    "path" : "~/Google-Certificate/Week_2/Basic_Programming",
     "sortOrder" : [
+        {
+            "ascending" : true,
+            "columnIndex" : 4
+        },
         {
             "ascending" : true,
             "columnIndex" : 2
