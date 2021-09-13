@@ -1,13 +1,13 @@
 {
-    "path" : "~/Google-Certificate/Week_2/Basic_Programming",
-    "sortOrder" : [
+    "path": "~/Google-Certificate",
+    "sortOrder": [
         {
-            "ascending" : true,
-            "columnIndex" : 4
+            "columnIndex": 4,
+            "ascending": true
         },
         {
-            "ascending" : true,
-            "columnIndex" : 2
+            "columnIndex": 2,
+            "ascending": true
         }
     ]
 }
