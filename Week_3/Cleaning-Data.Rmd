@@ -41,3 +41,57 @@ Vamos a pedir un resumen (sumario) del dataset
 skim_without_charts(penguins)
 ```
 
+Si queremos tener una idea rápida de lo que hay en el dataset usamos glimpse()
+
+```{r}
+glimpse(penguins)
+```
+
+Con head() también tenemos una rápida preview de los datos
+
+```{r}
+head(penguins)
+```
+
+Ahora ya podemos seleccionar los datos con los que queremos trabajar. Por ejemplo,
+si queremos ver species
+
+```{r}
+penguins %>%
+  select(species)
+```
+
+O si por ejemplo lo queremos todo excepto species
+
+```{r}
+penguins %>%
+  select(-species)
+```
+
+Otra acción que podemos hacer para facilitar el análisis si fuera necesario es
+renombrar una variable (columna)
+
+```{r}
+penguins %>%
+  rename(island_new = island)
+```
+
+Dada la necesidad de usar las variables una y otra vez, es interesante que los 
+nombres sean consistentes. Con rename_with() podemos hacerlo. Por ejemplo que todos
+utilicen el _ para unir palabras
+
+```{r}
+rename_with(penguins, toupper)
+```
+
+O que estén todos los nombres de variables en minúsculas
+
+```{r}
+rename_with(penguins, tolower)
+```
+
+Y para asegurarnos que no contienen caracteres extraños usamos clean_names()
+
+```{r}
+clean_names(penguins)
+```
