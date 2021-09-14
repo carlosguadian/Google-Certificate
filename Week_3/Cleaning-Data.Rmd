@@ -1,0 +1,43 @@
+---
+title: "Cleaning Data"
+output: github_document
+---
+
+```{r}
+options(repos = list(CRAN="http://cran.rstudio.com/"))
+```
+
+
+# BASICS
+Primero instalación y carga de los paquetes que vamos a utilizar. Si ya están 
+instalados procedemos al segundo paso.
+
+```{r}
+install.packages("here")
+install.packages("skimr")
+install.packages("janitor")
+install.packages("dplyr")
+```
+
+Procedemos a cargarlos
+
+```{r}
+library("here")
+library("skimr")
+library("janitor")
+library("dplyr")
+```
+
+Utilizaremos como ejemplo Penguin Palmer Package. Instalamos y cargamos
+
+```{r}
+install.packages("palmerpenguins")
+library("palmerpenguins")
+```
+
+Vamos a pedir un resumen (sumario) del dataset
+
+```{r}
+skim_without_charts(penguins)
+```
+
