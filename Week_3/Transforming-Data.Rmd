@@ -7,6 +7,12 @@ output: github_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
+## Cargar Tidyr
+```{r}
+library(tidyr)
+library(dplyr)
+```
+
 ## Crear un data frame
 Vamos a crear tres vectores y fusionarlos en un dataframe para trabjar con él.
 
@@ -41,7 +47,7 @@ Con mutate() podemos añadir columnas con cálculos de otras variables.
 Consultamos la variables en el dataset penguins.
 
 ```{r}
-view(penguins)
+library(palmerpenguins)
 ```
 
 Añadimos una nueva columna calculando los Kg de los pingüinos y su altura en m.
