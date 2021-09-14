@@ -1,0 +1,61 @@
+---
+title: "Organize your data"
+output: github_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+Para realizar los ejemplos lo haremos con penguins dataset, parte de tidyverse
+
+```{r}
+library(tidyverse)
+library("palmerpenguins")
+```
+
+## Sorting data
+Vamos a ordenar el dataset penguins por bill_length_mm con arrange. Por defecto 
+lo hace en orden ascendente.
+
+```{r}
+penguins %>% arrange(bill_length_mm)
+```
+
+Si lo queremos en orden descendente sólo enemos que añadir un - a la variable.
+
+```{r}
+penguins %>% arrange(-bill_length_mm)
+```
+
+Para poder trabajar con estos datos sin dañar los originales podemos asignar
+el nuevo orden a un nuevo dataframe
+
+```{r}
+penguins2 <- penguins %>% arrange(-bill_length_mm)
+```
+
+## Grouping
+Podemos utilizar group_by() para realizar todo tipo de operaciones, desde obtener
+un sumario de los datos a ordenarlos.
+
+Vamos a pedir la media de bill_length_mm agrupado por island sin valores NA
+
+```{r}
+penguins %>% group_by(island) %>% drop_na() %>% summarize(mean_bill_lenght_mm =
+                                                            mean(bill_length_mm))
+```
+
+Podemos combinar group_by con más de una variable, igual que summarize
+
+```{r}
+penguins %>% group_by(species, island) %>% 
+  drop_na() %>% summarize(mean_bl = mean(bill_length_mm), max_bl = max(bill_length_mm))
+```
+
+## Filter
+Evidentemente podemos filtrar el dataset, por ejemplo por una de las especies
+
+```{r}
+penguins %>% filter(species == "Adelie")
+```
