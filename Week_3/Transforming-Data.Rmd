@@ -1,0 +1,51 @@
+---
+title: "Transforming Data"
+output: github_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Crear un data frame
+Vamos a crear tres vectores y fusionarlos en un dataframe para trabjar con él.
+
+```{r}
+id <- c(1:10)
+
+name <- c("John Mendes", "Rob Stewart", "Rachel Abrahamson", "Christy Hickman", "Johnson Harper", "Candace Miller", "Carlson Landy", "Pansy Jordan", "Darius Berry", "Claudia Garcia")
+
+job_title <- c("Professional", "Programmer", "Management", "Clerical", "Developer", "Programmer", "Management", "Clerical", "Developer", "Programmer")
+
+employee <- data.frame(id, name, job_title)
+```
+
+## Separar datos de una columna
+Vamos a separar la columna name en first y last name, indicando que lo debe hacer 
+al primer espacio en blanco. Lo vamos a guardar en employee_2 para después.
+
+```{r}
+employee_2 <- separate(employee, name, into = c("first_name", "last_name"), sep = " ")
+```
+
+## Unir datos de una columna
+Ahora vamos a la inversa, vamos a unir datos de diferentes columna en una sola.
+Uniremos de nuevo first y last name para dejarlo como al principio.
+
+```{r}
+unite(employee_2, "name", first_name, last_name, sep = " ")
+```
+
+## Crear una nueva variable
+Con mutate() podemos añadir columnas con cálculos de otras variables.
+Consultamos la variables en el dataset penguins.
+
+```{r}
+view(penguins)
+```
+
+Añadimos una nueva columna calculando los Kg de los pingüinos y su altura en m.
+```{r}
+penguins %>% 
+  mutate(body_mass_kg = body_mass_g / 1000, flipper_length_m = flipper_length_mm / 1000)
+```
