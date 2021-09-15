@@ -1,0 +1,46 @@
+---
+title: "Closer look at data"
+author: "Carlos Guadián"
+date: "9/15/2021"
+output: github_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+options(repos = list(CRAN="http://cran.rstudio.com/"))
+```
+
+## Puede parecer lo mismo, pero no lo es
+Hay conjuntos de datos que pese a que tienen unas características similares, tienen diferencias importantes en cuanto a su composición.
+
+Para mostrar el ejemplo tomamos Anscombe Quartet. Instalamos y cargamos el paquete Tmisc.
+
+```{r}
+install.packages("Tmisc")
+library(Tmisc)
+```
+
+Y cargamos y vemos los datos que queremos examinar.
+
+```{r}
+data("quartet")
+head(quartet)
+```
+
+Se puede apreciar que hay cuatro sets diferentes de datos. Vamos a pedir unos datos estadísticos básicos de cada uno de ellos con summarize para ver si hay diferencias entre ellos. 
+
+En los resultados tanto la media, la desviación estándar y la correlación entre x e y son idénticas en todos los casos. Por lo tanto, si nos basamos en el sumario estadístico, podríamos decir que los cuatro grupos son iguales, en cuanto a datos se refiere.
+
+```{r}
+library(dplyr)
+quartet %>% 
+  group_by(set) %>% 
+  summarize(mean(x), sd(x), mean(y), sd(y), cor(x, y))
+```
+
+Pero si los visualizamos con un sencillo gráfico... Podemos ver que cada uno de los sets es completamente diferente.
+
+```{r}
+library(ggplot2)
+ggplot(quartet, aes(x, y)) + geom_point() + geom_smooth(formula = y ~ x, method = lm, se = FALSE) +facet_wrap(~ set)
+```

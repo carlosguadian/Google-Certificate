@@ -1,5 +1,7 @@
 Transforming Data
 ================
+Carlos Guadián
+9/14/2021
 
 ## Cargar Tidyr
 
