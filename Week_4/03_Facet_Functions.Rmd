@@ -1,0 +1,48 @@
+---
+title: "Facet Functions"
+output: github_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+library("ggplot2")
+library("palmerpenguins")
+data("penguins")
+```
+
+## Facets
+Con "facets" podemos mostrar grupos más pequeños o secciones de un grupo de datos, por ejemplo por los diferentes factores de una variable.
+
+Tenemos dos tipos:
+
+- facet_wrap() para utilizar con una sola variable.
+- facet_grid()
+
+## facet_wrap()
+Vamos a dividir el scatterplot de los pingüinos y generar uno para cada especie.
+
+```{r}
+ggplot(data = penguins) + geom_point(mapping = aes(x = flipper_length_mm, y = body_mass_g, color = species)) + facet_wrap(~species)
+```
+
+Vamos a probar ahora con "diamonds" y generar un gráfico para grupo de "cut".
+
+```{r}
+ggplot(data = diamonds) + geom_bar(mapping = aes(x = color, fill = cut)) + facet_wrap(~cut)
+```
+
+## facet_grid()
+Utilizaremos facet_grid() cuando queramos utilizar más de una variable. Por ejemplo para generar gráficos de los pingüinos por especie y sexo.
+
+```{r}
+ggplot(data = penguins) + geom_point(mapping = aes(x = flipper_length_mm, y = body_mass_g, color = species)) + facet_grid(sex~species)
+```
+
+O por isla y sexo...
+
+```{r}
+ggplot(data = penguins) + geom_point(mapping = aes(x = flipper_length_mm, y = body_mass_g, color = species)) + facet_wrap(island~sex)
+```
